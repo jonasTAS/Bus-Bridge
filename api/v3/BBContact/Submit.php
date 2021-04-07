@@ -93,8 +93,8 @@ function civicrm_api3_b_b_contact_Submit($params) {
             ));
             $activity = civicrm_api3('Activity', 'create', array(
               'source_contact_id' => $contact_id,
-              'activity_type_id' => 'Mailinglist Event',
-              'subject' => 'Requested: '.$group_name.' (DoubleOptIn sent)',
+              'activity_type_id' => 'Automatische Email',
+              'subject' => 'Double Opt-In für die Gruppe "'.$group_name.'" gesendet.',
               'status_id' => 'Completed'
             ));
           }
@@ -109,8 +109,8 @@ function civicrm_api3_b_b_contact_Submit($params) {
           ));
           $activity = civicrm_api3('Activity', 'create', array(
             'source_contact_id' => $contact_id,
-            'activity_type_id' => 'Mailinglist Event',
-            'subject' => 'Requested: '.$group_name.' (DoubleOptIn sent)',
+            'activity_type_id' => 'Automatische Email',
+            'subject' => 'Double Opt-In für die Gruppe "'.$group_name.'" gesendet.',
             'status_id' => 'Completed'
           ));
         }
