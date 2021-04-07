@@ -1,7 +1,7 @@
 # Bus Bridge API
 
 Dies ist eine Extension für CiviCRM, geschrieben von Jens Schuppe ([Systopia](https://systopia.de)). Sie wurde unter der GNU Affero Public License 3.0 veröffentlicht.
-Änderungen und ein Rebranding wurden von Jonas Marx für **[The Animal Society](https://animalsociety.de)** durchgeführt.
+Änderungen und ein Rebranding wurden von Jonas Marx für ***[The Animal Society](https://animalsociety.de)*** durchgeführt.
 
 ## Requirements
 
