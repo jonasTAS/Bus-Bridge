@@ -13,10 +13,10 @@
 | written permission from the original author(s).             |
 +-------------------------------------------------------------*/
 
-use CRM_Aeapi_ExtensionUtil as E;
+use CRM_Bbapi_ExtensionUtil as E;
 
 /**
- * AEContact.Submit API specification (optional)
+ * BBContact.Submit API specification (optional)
  * This is used for documentation and validation.
  *
  * @param array $spec
@@ -24,7 +24,7 @@ use CRM_Aeapi_ExtensionUtil as E;
  *
  * @return void
  */
-function _civicrm_api3_a_e_contact_Submit_spec(&$spec) {
+function _civicrm_api3_b_b_contact_Submit_spec(&$spec) {
   $spec['contact'] = array(
     'name' => 'contact',
     'title' => E::ts('Contact data'),
@@ -50,13 +50,13 @@ function _civicrm_api3_a_e_contact_Submit_spec(&$spec) {
 }
 
 /**
- * AEContact.Submit API
+ * BBContact.Submit API
  *
  * @param array $params
  *
  * @return array API result descriptor
  */
-function civicrm_api3_a_e_contact_Submit($params) {
+function civicrm_api3_b_b_contact_Submit($params) {
   try {
     // Parse JSON from "contact" and "groups" parameters.
     if (!is_array($params['contact']) && ($params['contact'] = json_decode($params['contact'], JSON_OBJECT_AS_ARRAY)) === NULL) {
@@ -69,27 +69,27 @@ function civicrm_api3_a_e_contact_Submit($params) {
     }
 
     // Check if contact ID already exists
-    $contact_is_new = CRM_Aeapi_Submission::isNew($params['contact']);
+    $contact_is_new = CRM_Bbapi_Submission::isNew($params['contact']);
 
     // Retrieve contact ID for given contact data.
-    $contact_id = CRM_Aeapi_Submission::getContact($params['contact']['contact_type'], $params['contact']);
+    $contact_id = CRM_Bbapi_Submission::getContact($params['contact']['contact_type'], $params['contact']);
     // Load contact.
     $contact = civicrm_api3('Contact', 'getsingle', array('id' => $contact_id));
 
     // Add to group with given status.
     if (!empty($params['groups'])) {
       foreach($params['groups'] as $group_info) {
-        list($group_name, $group_status) = explode(':', $group_info) + [NULL, CRM_Aeapi_Submission::GROUP_STATUS_ADDED];
+        list($group_name, $group_status) = explode(':', $group_info) + [NULL, CRM_Bbapi_Submission::GROUP_STATUS_ADDED];
         // This group is the main newsletter for the petition. If the contact
         // accepted the reception of a newsletter, we send a Double OptIn by the
         // MailingEventSubscribe event.
-        if (strcasecmp($group_status, CRM_Aeapi_Submission::NEWSLETTER_GROUP) === 0) {
+        if (strcasecmp($group_status, CRM_Bbapi_Submission::NEWSLETTER_GROUP) === 0) {
           if ($params['want_newsletter']) {
             // Set group-subscription status to pending
             $mailing_event_subscribe = civicrm_api3('MailingEventSubscribe', 'create', array(
               'contact_id' => $contact_id,
               'email' => $contact['email'],
-              'group_id' => CRM_Aeapi_Submission::getGroupIdByName($group_name)
+              'group_id' => CRM_Bbapi_Submission::getGroupIdByName($group_name)
             ));
             $activity = civicrm_api3('Activity', 'create', array(
               'source_contact_id' => $contact_id,
@@ -101,11 +101,11 @@ function civicrm_api3_a_e_contact_Submit($params) {
         }
         // Pending groups also need a Double-OptIn, but it doesn't depend on
         // accepting the newsletter.
-        elseif (strcasecmp($group_status, CRM_Aeapi_Submission::GROUP_STATUS_PENDING) === 0) {
+        elseif (strcasecmp($group_status, CRM_Bbapi_Submission::GROUP_STATUS_PENDING) === 0) {
           $mailing_event_subscribe = civicrm_api3('MailingEventSubscribe', 'create', array(
             'contact_id' => $contact_id,
             'email' => $contact['email'],
-            'group_id' => CRM_Aeapi_Submission::getGroupIdByName($group_name),
+            'group_id' => CRM_Bbapi_Submission::getGroupIdByName($group_name),
           ));
           $activity = civicrm_api3('Activity', 'create', array(
             'source_contact_id' => $contact_id,
@@ -116,11 +116,11 @@ function civicrm_api3_a_e_contact_Submit($params) {
         }
         // For some Welcome Journeys, we only want new contacts to join and only
         // in case they just accepted the newsletter.
-        elseif (strcasecmp($group_status, CRM_Aeapi_Submission::DOI_NEW_GROUP) === 0) {
+        elseif (strcasecmp($group_status, CRM_Bbapi_Submission::DOI_NEW_GROUP) === 0) {
           if ($params['want_newsletter'] && $contact_is_new) {
             $group_contact = civicrm_api3('GroupContact', 'create', array(
               'contact_id' => $contact_id,
-              'group_id' => CRM_Aeapi_Submission::getGroupIdByName($group_name),
+              'group_id' => CRM_Bbapi_Submission::getGroupIdByName($group_name),
               'status' => 'Added'
             ));
           }
@@ -130,7 +130,7 @@ function civicrm_api3_a_e_contact_Submit($params) {
         else {
           $group_contact = civicrm_api3('GroupContact', 'create', array(
             'contact_id' => $contact_id,
-            'group_id' => CRM_Aeapi_Submission::getGroupIdByName($group_name),
+            'group_id' => CRM_Bbapi_Submission::getGroupIdByName($group_name),
             'status' => ucfirst($group_status)
           ));
         }

@@ -1,4 +1,4 @@
-Package: de.animalequality.aeapi
+Package: de.theanimalsociety.bbapi
 Copyright (C) 2019, SYSTOPIA <info@systopia.de>
 Licensed under the GNU Affero Public License 3.0 (below).
 

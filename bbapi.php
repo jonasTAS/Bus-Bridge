@@ -13,16 +13,16 @@
 | written permission from the original author(s).             |
 +-------------------------------------------------------------*/
 
-require_once 'aeapi.civix.php';
-use CRM_Aeapi_ExtensionUtil as E;
+require_once 'bbapi.civix.php';
+use CRM_Bbapi_ExtensionUtil as E;
 
 /**
  * Implements hook_civicrm_config().
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_config
  */
-function aeapi_civicrm_config(&$config) {
-  _aeapi_civix_civicrm_config($config);
+function bbapi_civicrm_config(&$config) {
+  _bbapi_civix_civicrm_config($config);
 }
 
 /**
@@ -30,8 +30,8 @@ function aeapi_civicrm_config(&$config) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_xmlMenu
  */
-function aeapi_civicrm_xmlMenu(&$files) {
-  _aeapi_civix_civicrm_xmlMenu($files);
+function bbapi_civicrm_xmlMenu(&$files) {
+  _bbapi_civix_civicrm_xmlMenu($files);
 }
 
 /**
@@ -39,8 +39,8 @@ function aeapi_civicrm_xmlMenu(&$files) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_install
  */
-function aeapi_civicrm_install() {
-  _aeapi_civix_civicrm_install();
+function bbapi_civicrm_install() {
+  _bbapi_civix_civicrm_install();
 }
 
 /**
@@ -48,8 +48,8 @@ function aeapi_civicrm_install() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_postInstall
  */
-function aeapi_civicrm_postInstall() {
-  _aeapi_civix_civicrm_postInstall();
+function bbapi_civicrm_postInstall() {
+  _bbapi_civix_civicrm_postInstall();
 }
 
 /**
@@ -57,8 +57,8 @@ function aeapi_civicrm_postInstall() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_uninstall
  */
-function aeapi_civicrm_uninstall() {
-  _aeapi_civix_civicrm_uninstall();
+function bbapi_civicrm_uninstall() {
+  _bbapi_civix_civicrm_uninstall();
 }
 
 /**
@@ -66,8 +66,8 @@ function aeapi_civicrm_uninstall() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_enable
  */
-function aeapi_civicrm_enable() {
-  _aeapi_civix_civicrm_enable();
+function bbapi_civicrm_enable() {
+  _bbapi_civix_civicrm_enable();
 }
 
 /**
@@ -75,8 +75,8 @@ function aeapi_civicrm_enable() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_disable
  */
-function aeapi_civicrm_disable() {
-  _aeapi_civix_civicrm_disable();
+function bbapi_civicrm_disable() {
+  _bbapi_civix_civicrm_disable();
 }
 
 /**
@@ -84,8 +84,8 @@ function aeapi_civicrm_disable() {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_upgrade
  */
-function aeapi_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
-  return _aeapi_civix_civicrm_upgrade($op, $queue);
+function bbapi_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
+  return _bbapi_civix_civicrm_upgrade($op, $queue);
 }
 
 /**
@@ -96,8 +96,8 @@ function aeapi_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_managed
  */
-function aeapi_civicrm_managed(&$entities) {
-  _aeapi_civix_civicrm_managed($entities);
+function bbapi_civicrm_managed(&$entities) {
+  _bbapi_civix_civicrm_managed($entities);
 }
 
 /**
@@ -109,8 +109,8 @@ function aeapi_civicrm_managed(&$entities) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_caseTypes
  */
-function aeapi_civicrm_caseTypes(&$caseTypes) {
-  _aeapi_civix_civicrm_caseTypes($caseTypes);
+function bbapi_civicrm_caseTypes(&$caseTypes) {
+  _bbapi_civix_civicrm_caseTypes($caseTypes);
 }
 
 /**
@@ -123,8 +123,8 @@ function aeapi_civicrm_caseTypes(&$caseTypes) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_angularModules
  */
-function aeapi_civicrm_angularModules(&$angularModules) {
-  _aeapi_civix_civicrm_angularModules($angularModules);
+function bbapi_civicrm_angularModules(&$angularModules) {
+  _bbapi_civix_civicrm_angularModules($angularModules);
 }
 
 /**
@@ -132,8 +132,8 @@ function aeapi_civicrm_angularModules(&$angularModules) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_alterSettingsFolders
  */
-function aeapi_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
-  _aeapi_civix_civicrm_alterSettingsFolders($metaDataFolders);
+function bbapi_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
+  _bbapi_civix_civicrm_alterSettingsFolders($metaDataFolders);
 }
 
 /**
@@ -143,22 +143,22 @@ function aeapi_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_entityTypes
  */
-function aeapi_civicrm_entityTypes(&$entityTypes) {
-  _aeapi_civix_civicrm_entityTypes($entityTypes);
+function bbapi_civicrm_entityTypes(&$entityTypes) {
+  _bbapi_civix_civicrm_entityTypes($entityTypes);
 }
 
 /**
  * Define custom (Drupal) permissions
  */
-function aeapi_civicrm_permission(&$permissions) {
-  $permissions['access AE Contact API'] = 'API: Access AEContact API';
+function bbapi_civicrm_permission(&$permissions) {
+  $permissions['access BB Contact API'] = 'API: Access BBContact API';
 }
 
 /**
  * Set permissions for runner/engine API call
  */
-function aeapi_civicrm_alterAPIPermissions($entity, $action, &$params, &$permissions) {
-  $permissions['a_e_contact']['submit'] = array('access AE Contact API');
+function bbapi_civicrm_alterAPIPermissions($entity, $action, &$params, &$permissions) {
+  $permissions['b_b_contact']['submit'] = array('access BB Contact API');
 }
 
 // --- Functions below this ship commented out. Uncomment as required. ---
@@ -168,7 +168,7 @@ function aeapi_civicrm_alterAPIPermissions($entity, $action, &$params, &$permiss
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_preProcess
  *
-function aeapi_civicrm_preProcess($formName, &$form) {
+function bbapi_civicrm_preProcess($formName, &$form) {
 
 } // */
 
@@ -177,8 +177,8 @@ function aeapi_civicrm_preProcess($formName, &$form) {
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_navigationMenu
  *
-function aeapi_civicrm_navigationMenu(&$menu) {
-  _aeapi_civix_insert_navigation_menu($menu, 'Mailings', array(
+function bbapi_civicrm_navigationMenu(&$menu) {
+  _bbapi_civix_insert_navigation_menu($menu, 'Mailings', array(
     'label' => E::ts('New subliminal message'),
     'name' => 'mailing_subliminal_message',
     'url' => 'civicrm/mailing/subliminal',
@@ -186,5 +186,5 @@ function aeapi_civicrm_navigationMenu(&$menu) {
     'operator' => 'OR',
     'separator' => 0,
   ));
-  _aeapi_civix_navigationMenu($menu);
+  _bbapi_civix_navigationMenu($menu);
 } // */

@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
-<extension key="de.animalequality.aeapi" type="module">
-  <file>aeapi</file>
-  <name>Animal Equality API</name>
-  <description>Custom API for Animal Equality</description>
+<extension key="de.theanimalsociety.bbapi" type="module">
+  <file>bbapi</file>
+  <name>Bus Bridge API</name>
+  <description>Custom Extension for adding new contacts over API.</description>
   <license>AGPL-3.0</license>
   <maintainer>
     <author>SYSTOPIA</author>
     <email>info@systopia.de</email>
   </maintainer>
   <urls>
-    <url desc="Main Extension Page">http://github.com/systopia/de.animalequality.aeapi</url>
-    <url desc="Documentation">https://github.com/systopia/de.animalequality.aeapi/blob/master/README.md</url>
-    <url desc="Support">http://github.com/systopia/de.animalequality.aeapi/issues</url>
-    <url desc="Licensing">http://www.gnu.org/licenses/agpl-3.0.html</url>
+    <url desc="Main Extension Page">https://github.com/jonasTAS/Bus-Bridge</url>
+    <url desc="Documentation">https://github.com/jonasTAS/Bus-Bridge/blob/master/README.md</url>
+    <url desc="Support">https://github.com/jonasTAS/Bus-Bridge/issues</url>
+    <url desc="Licensing">https://www.gnu.org/licenses/agpl-3.0.html</url>
   </urls>
   <releaseDate></releaseDate>
   <version>1.4-dev</version>
@@ -22,6 +22,6 @@
   </compatibility>
   <comments></comments>
   <civix>
-    <namespace>CRM/Aeapi</namespace>
+    <namespace>CRM/Bbapi</namespace>
   </civix>
 </extension>

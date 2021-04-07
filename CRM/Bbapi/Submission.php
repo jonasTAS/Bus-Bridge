@@ -13,9 +13,9 @@
 | written permission from the original author(s).             |
 +-------------------------------------------------------------*/
 
-use CRM_Aeapi_ExtensionUtil as E;
+use CRM_Bbapi_ExtensionUtil as E;
 
-class CRM_Aeapi_Submission {
+class CRM_Bbapi_Submission {
 
   const NEWSLETTER_GROUP = 'Newsletter';
 
