@@ -15,7 +15,7 @@ Eine CiviCRM Extension für die API.
 
 ## Nutzung
 
-Ihr könnt die Bus Bridge Schnittstelle über den API Explorer benutzen. Dieser findet sich unter *Support > Developer > Api Explorer v3*.
+Ihr könnt die Bus Bridge Schnittstelle über den API Explorer benutzen. Dieser findet sich unter *Support > Developer > Api Explorer v3*. Die Entity ist BBContact und die Action heißt submit.
 
 **Contact data**
 JSON Format. Contact_type muss mit angegeben werden:
