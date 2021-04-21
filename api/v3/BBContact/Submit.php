@@ -39,6 +39,13 @@ function _civicrm_api3_b_b_contact_Submit_spec(&$spec) {
     'api.required' => 0,
     'description' => E::ts('An array of group data.'),
   );
+  $spec['activities'] = array(
+    'name' => 'activities',
+    'title' => E::ts('Activity data'),
+    'type' => CRM_Utils_Type::T_STRING,
+    'api.required' => 0,
+    'description' => E::ts('An array of activity data.'),
+  );
   $spec['want_newsletter'] = array(
     'name' => 'want_newsletter',
     'title' => E::ts('Wants newsletter'),
@@ -65,6 +72,11 @@ function civicrm_api3_b_b_contact_Submit($params) {
     if (!empty($params['groups'])) {
       if (!is_array($params['groups']) && ($params['groups'] = json_decode($params['groups'], JSON_OBJECT_AS_ARRAY)) === NULL) {
         throw new Exception(E::ts('Could not parse parameter "groups".'));
+      }
+    }
+    if (!empty($params['activities'])) {
+      if (!is_array($params['activities']) && ($params['activities'] = json_decode($params['activities'], JSON_OBJECT_AS_ARRAY)) === NULL) {
+        throw new Exception(E::ts('Could not parse parameter "activities".'));
       }
     }
 
@@ -134,6 +146,22 @@ function civicrm_api3_b_b_contact_Submit($params) {
             'status' => ucfirst($group_status)
           ));
         }
+      }
+    }
+
+    if (!empty($params['activities'])) {
+      foreach($params['activities'] as $activity_info) {
+        $new_activity = array(
+          'source_contact_id' => $contact_id,
+          'activity_type_id' => $activity_info['activity_type_id'],
+          'subject' => $activity_info['subject'],
+          'status_id' => isset($activity_info['status_id']) ? $activity_info['status_id'] : 'Completed'
+        );
+        if (isset($activity_info['timestamp'])) {
+          $new_activity['created_at'] = $activity_info['timestamp'];
+          $new_activity['activity_date_time'] = date('Y-m-d H:i:s', $activity_info['timestamp']);
+        }
+        $activity = civicrm_api3('Activity', 'create', $new_activity);
       }
     }
 
