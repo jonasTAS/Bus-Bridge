@@ -145,17 +145,16 @@ function civicrm_api3_b_b_contact_Submit($params) {
     }
 
     if (!empty($params['activities'])) {
-      $activities = json_decode($params['activities']);
-      foreach($activities as $activity_info) {
+      //$activities = json_decode($params['activities']);
+      //foreach($activities as $activity_info) {
         $new_activity = civicrm_api3('Activity', 'create', array(
           'source_contact_id' => $contact_id,
           'activity_type_id' => 'Double Opt-In bestätigt',
           'subject' => 'Double Opt-In für Newsletter wurde bestätigt',
           'status_id' => 'Completed',
-          'created_date' => NULL,
           'activity_date_time' => '2020-01-01 10:10:10'
         ));
-      }
+      //}
     }
 
     return civicrm_api3_create_success(
