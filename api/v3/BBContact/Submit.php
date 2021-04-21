@@ -39,6 +39,13 @@ function _civicrm_api3_b_b_contact_Submit_spec(&$spec) {
     'api.required' => 0,
     'description' => E::ts('An array of group data.'),
   );
+  $spec['activities'] = array(
+    'name' => 'activities',
+    'title' => E::ts('Activity data'),
+    'type' => CRM_Utils_Type::T_STRING,
+    'api.required' => 0,
+    'description' => E::ts('An array of activity data.'),
+  );
   $spec['want_newsletter'] = array(
     'name' => 'want_newsletter',
     'title' => E::ts('Wants newsletter'),
@@ -134,6 +141,20 @@ function civicrm_api3_b_b_contact_Submit($params) {
             'status' => ucfirst($group_status)
           ));
         }
+      }
+    }
+
+    if (!empty($params['activities'])) {
+      $activities = json_decoce($params['activities']);
+      foreach($activities as $activity_info) {
+        $new_activity = civicrm_api3('Activity', 'create', array(
+          'source_contact_id' => $contact_id,
+          'activity_type_id' => 'Double Opt-In bestätigt',
+          'subject' => 'Double Opt-In für Newsletter wurde bestätigt',
+          'status_id' => 'Completed',
+          'created_date' => NULL,
+          'activity_date_time' => '2020-01-01 10:10:10'
+        ));
       }
     }
 
