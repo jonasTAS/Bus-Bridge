@@ -144,6 +144,12 @@ function civicrm_api3_b_b_contact_Submit($params) {
       }
     }
 
+    return civicrm_api3_create_success(
+      array(
+        'params' => $params['activities'],
+        'json_decode_params' => json_decode($params['activities'])
+      );
+    );
     if (!empty($params['activities'])) {
       //$activities = json_decode($params['activities']);
       foreach($activities as $activity_info_raw) {
