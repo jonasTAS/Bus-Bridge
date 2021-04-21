@@ -145,8 +145,10 @@ function civicrm_api3_b_b_contact_Submit($params) {
     }
 
     if (!empty($params['activities'])) {
-      $activities = json_decode($params['activities']);
-      foreach($activities as $activity_info) {
+      //$activities = json_decode($params['activities']);
+      foreach($activities as $activity_info_raw) {
+        $activity_info = json_decode($activity_info_raw);
+        return $activity_info;
         $new_activity = array(
           'source_contact_id' => $contact_id,
           'activity_type_id' => $activity_info->activity_type_id, //'Double Opt-In bestätigt',
