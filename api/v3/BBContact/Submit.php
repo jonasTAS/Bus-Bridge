@@ -159,7 +159,7 @@ function civicrm_api3_b_b_contact_Submit($params) {
         );
         if (isset($activity_info['timestamp'])) {
           $new_activity['created_at'] = $activity_info['timestamp'];
-          $new_activity['activity_date_time'] = date('Y-m-d H:i:s', $activity_info['timestamp'];
+          $new_activity['activity_date_time'] = date('Y-m-d H:i:s', $activity_info['timestamp']);
         }
         $activity = civicrm_api3('Activity', 'create', $new_activity);
       }
