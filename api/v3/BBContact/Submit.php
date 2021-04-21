@@ -145,7 +145,7 @@ function civicrm_api3_b_b_contact_Submit($params) {
     }
 
     if (!empty($params['activities'])) {
-      $activities = json_decoce($params['activities']);
+      $activities = json_decode($params['activities']);
       foreach($activities as $activity_info) {
         $new_activity = civicrm_api3('Activity', 'create', array(
           'source_contact_id' => $contact_id,
