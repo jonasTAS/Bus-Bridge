@@ -154,10 +154,10 @@ function civicrm_api3_b_b_contact_Submit($params) {
         $new_activity = array(
           'source_contact_id' => $contact_id,
           'activity_type_id' => $activity_info['activity_type_id'], //'Double Opt-In bestätigt',
-          'subject' => $activity_info->subject, //'Double Opt-In für Newsletter wurde bestätigt',
+          'subject' => $activity_info['subject'], //'Double Opt-In für Newsletter wurde bestätigt',
           'status_id' => 'Completed',
-          'created_at' => $activity_info->timestamp,
-          'activity_date_time' => date('Y-m-d H:i:s', $activity_info->timestamp) //'2020-01-01 10:10:10'
+          'created_at' => $activity_info['timestamp'],
+          'activity_date_time' => date('Y-m-d H:i:s', $activity_info['timestamp']) //'2020-01-01 10:10:10'
         );
         $activity = civicrm_api3('Activity', 'create', $new_activity);
       }
