@@ -144,17 +144,9 @@ function civicrm_api3_b_b_contact_Submit($params) {
       }
     }
 
-    return civicrm_api3_create_success(
-      array(
-        'params' => $params['activities'],
-        'json_decode_params' => json_decode($params['activities'])
-      );
-    );
     if (!empty($params['activities'])) {
-      //$activities = json_decode($params['activities']);
-      foreach($activities as $activity_info_raw) {
-        $activity_info = json_decode($activity_info_raw);
-        return $activity_info;
+      $activities = json_decode($params['activities']);
+      foreach($activities as $activity_info) {
         $new_activity = array(
           'source_contact_id' => $contact_id,
           'activity_type_id' => $activity_info->activity_type_id, //'Double Opt-In bestätigt',
@@ -163,7 +155,7 @@ function civicrm_api3_b_b_contact_Submit($params) {
           'created_at' => $activity_info->timestamp,
           'activity_date_time' => date('Y-m-d H:i:s', $activity_info->timestamp) //'2020-01-01 10:10:10'
         );
-        civicrm_api3('Activity', 'create', $new_activity);
+        $activity = civicrm_api3('Activity', 'create', $new_activity);
       }
     }
 
