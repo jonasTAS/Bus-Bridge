@@ -18,8 +18,10 @@ Eine CiviCRM Extension für die API.
 Ihr könnt die Bus Bridge Schnittstelle über den API Explorer benutzen. Dieser findet sich unter *Support > Developer > Api Explorer v3*.
 
 **Contact data**
-JSON Format. Contact_type muss mit angegeben werden:
+JSON Format. Contact_type muss mit angegeben werden.
 
+**Activity data**
+Zusammen mit dem Kontakt und dessen Gruppen können auch Aktivitäten hinzugefügt werden. Diese müssen die Aktivitätstyp ID, den Betreff und gegebenenfalls das Erstellungsdatum beinhalten.
 
 **Group data**
 JSON Array. Jeder Eintrag beinhaltet den civi-internen Titel (Achtung: NICHT den Namen!) der Gruppe, gefolgt von einem Doppelpunkt und der Art, wie die Gruppe hinzugefügt werden soll:
@@ -33,9 +35,12 @@ Es gibt verschiedene Arten, wie der Kontakt zu einer Gruppe hinzugefügt werden 
 **Wants newsletter**
 Einfache "Yes/No" Auswahl. Mithilfe dieser Variable wird entschieden, ob der Kontakt zur Newsletter-Gruppe hinzugefügt wird, siehe **Group data** und "Newsletter".
 
+
+
 ### Beispiel
 ```
 Contact data: {"firstname":"Max", "lastname":"Mustermann", "email":"max.mustermann@gmail.de",  "contact_type":"individual"}
+Activity data: [{"activity_type_id": "E-Mail", "subject": "Test", "timestamp": "1616246070"}]
 Group data: ["Testnewsletter_1:Newsletter", "Testgruppe_2:Added"]
 Wants newsletter: "Yes"
 ```
