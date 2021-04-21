@@ -153,7 +153,7 @@ function civicrm_api3_b_b_contact_Submit($params) {
       foreach($params['activities'] as $activity_info) {
         $new_activity = array(
           'source_contact_id' => $contact_id,
-          'activity_type_id' => 'Double Opt-In bestätigt',
+          'activity_type_id' => $activity_info['activity_type_id'], //'Double Opt-In bestätigt',
           'subject' => $activity_info->subject, //'Double Opt-In für Newsletter wurde bestätigt',
           'status_id' => 'Completed',
           'created_at' => $activity_info->timestamp,
