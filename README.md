@@ -21,7 +21,7 @@ Ihr könnt die Bus Bridge Schnittstelle über den API Explorer benutzen. Dieser 
 JSON Format. Contact_type muss mit angegeben werden.
 
 **Activity data**
-Zusammen mit dem Kontakt und dessen Gruppen können auch Aktivitäten hinzugefügt werden. Diese müssen die Aktivitätstyp ID, den Betreff und gegebenenfalls das Erstellungsdatum beinhalten.
+Zusammen mit dem Kontakt und dessen Gruppen können auch Aktivitäten hinzugefügt werden. Diese müssen die Aktivitätstyp ID, den Betreff und gegebenenfalls das Erstellungsdatum beinhalten. Optional ist auch die status_id konfigurierbar.
 
 **Group data**
 JSON Array. Jeder Eintrag beinhaltet den civi-internen Titel (Achtung: NICHT den Namen!) der Gruppe, gefolgt von einem Doppelpunkt und der Art, wie die Gruppe hinzugefügt werden soll:
