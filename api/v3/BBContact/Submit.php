@@ -74,6 +74,11 @@ function civicrm_api3_b_b_contact_Submit($params) {
         throw new Exception(E::ts('Could not parse parameter "groups".'));
       }
     }
+    if (!empty($params['activities'])) {
+      if (!is_array($params['activities']) && ($params['activities'] = json_decode($params['activities'], JSON_OBJECT_AS_ARRAY)) === NULL) {
+        throw new Exception(E::ts('Could not parse parameter "activities".'));
+      }
+    }
 
     // Check if contact ID already exists
     $contact_is_new = CRM_Bbapi_Submission::isNew($params['contact']);
@@ -145,8 +150,7 @@ function civicrm_api3_b_b_contact_Submit($params) {
     }
 
     if (!empty($params['activities'])) {
-      $activities = json_decode($params['activities']);
-      foreach($activities as $activity_info) {
+      foreach($params['activities'] as $activity_info) {
         $new_activity = array(
           'source_contact_id' => $contact_id,
           'activity_type_id' => $activity_info->activity_type_id, //'Double Opt-In bestätigt',
