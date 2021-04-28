@@ -39,7 +39,7 @@ Einfache "Yes/No" Auswahl. Mithilfe dieser Variable wird entschieden, ob der Kon
 
 ### Beispiel
 ```
-Contact data: {"firstname":"Max", "lastname":"Mustermann", "email":"max.mustermann@gmail.de",  "contact_type":"individual"}
+Contact data: {"first_name":"Max", "last_name":"Mustermann", "email":"max.mustermann@gmail.de",  "contact_type":"individual"}
 Activity data: [{"activity_type_id": "E-Mail", "subject": "Test", "timestamp": "1616246070"}]
 Group data: ["Testnewsletter_1:Newsletter", "Testgruppe_2:Added"]
 Wants newsletter: "Yes"
