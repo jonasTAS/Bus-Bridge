@@ -116,7 +116,7 @@ class CRM_Bbapi_Submission {
   public static function isNew($contact_data) {
     $manager = CRM_Extension_System::singleton()->getManager();
     if ($manager->getStatus('de.systopia.xcm') === CRM_Extension_Manager::STATUS_INSTALLED) {
-      $profile = CRM_Utils_Array::value('xcm_profile', $contact_data, NULL);
+      $profile = CRM_Utils_Array::value('default', $contact_data, NULL);
       $engine = CRM_Xcm_MatchingEngine::getEngine($profile);
       $contact = $engine->matchContact($contact_data);
       return empty($contact['contact_id']);
